@@ -108,7 +108,7 @@ const resources = {
           "iban": "IBAN (Belgisch)",
           "bic": "BIC Code",
           "civil_status": "Burgerlijke Staat",
-          "disabled": "Mindervaliditeit",
+          "disabled": "Persoon met beperking",
           "disabled_sub": "Persoon heeft een erkende handicap",
           "dependents": "Personen ten laste",
           "children": "Kinderen ten laste",
@@ -143,7 +143,7 @@ const resources = {
         "no_messages_sub": "Voer een mutatie uit om een bericht te genereren",
         "json_payload": "JSON Payload",
         "copy_json": "Kopieer JSON",
-        "status_log": "Status Log",
+        "status_log": "Statuslogboek",
         "gen_msg_log": "Bericht succesvol gegenereerd uit mutatie hook.",
         "sent_msg_log": "Verzonden naar backend interfacing layer.",
         "proc_msg_log": "Bevestigd door Earnie Messaging Service.",
@@ -204,7 +204,7 @@ const resources = {
           "netto": "Netto",
           "deductions": "Afhoudingen",
           "net_salary": "Netto Salaris",
-          "breakdown": "Looncomponenten Breakdown",
+          "breakdown": "Looncomponenten Overzicht",
           "close": "Sluiten",
           "generate": "Loonstrook Genereren"
         }
@@ -283,9 +283,9 @@ const resources = {
           "address_sub": "Adresse du domicile et numéro de compte pour le virement.",
           "payment": "Coordonnées Bancaires",
           "payment_sub": "Données pour le paiement du salaire.",
-          "family": "Situation Fiscale",
-          "family_sub": "Paramètres déterminant le précompte professionnel.",
-          "fiscal": "Contrôle & Confirmation",
+          "family": "Situation de famille",
+          "family_sub": "Paramètres déterminant le précompte professionnel et la quotité exemptée.",
+          "fiscal": "Vérification & Confirmation",
           "fiscal_sub": "Vérifiez attentivement le dossier avant l'envoi au moteur.",
           "review": { "name": "Révision", "desc": "Contrôle & Envoi", "title": "Prêt pour Sync ?", "sub": "Veuillez vérifier attentivement le dossier avant l'envoi au moteur." }
         },
@@ -329,7 +329,7 @@ const resources = {
         "no_messages_sub": "Effectuez une mutation pour générer un message",
         "json_payload": "Payload JSON",
         "copy_json": "Copier le JSON",
-        "status_log": "Log de statut",
+        "status_log": "Journal de statut",
         "gen_msg_log": "Message généré avec succès.",
         "sent_msg_log": "Envoyé à la couche d'interface backend.",
         "proc_msg_log": "Confirmé par le service de messagerie Earnie.",
@@ -459,7 +459,7 @@ const resources = {
       },
       "wizard": {
         "badge": "New Snapshot",
-        "title_prefix": "File of",
+        "title_prefix": "Record for",
         "subtitle": "New history for",
         "step_indicator": "Step",
         "steps": {
