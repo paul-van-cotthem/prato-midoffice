@@ -26,8 +26,8 @@ const snapshotSchema = z.object({
   familieNaam: z.string().min(2, 'Familienaam is verplicht'),
   inszNummer: z.string().regex(/^\d{2}\.\d{2}\.\d{2}-\d{3}\.\d{2}$/, 'Ongeldig INSZ formaat (XX.XX.XX-XXX.XX)'),
   geslacht: z.enum(['Man', 'Vrouw', 'X']),
-  geboorteDatum: z.string().min(1, 'Geboortedatum is verplicht'),
-  geboortePlaats: z.string().min(2, 'Geboorteplaats is verplicht'),
+  geboorteDatum: z.string().optional(),
+  geboortePlaats: z.string().optional(),
   straat: z.string().min(2, 'Straat is verplicht'),
   huisnummer: z.string().min(1, 'Huisnummer is verplicht'),
   bus: z.string().optional(),
@@ -118,7 +118,7 @@ export default function AddSnapshot() {
 
   const nextStep = async () => {
     let fieldsToValidate: (keyof SnapshotFormValues)[] = [];
-    if (currentStep === 1) fieldsToValidate = ['voornaam', 'familieNaam', 'inszNummer', 'geslacht', 'geboorteDatum', 'geboortePlaats'];
+    if (currentStep === 1) fieldsToValidate = ['voornaam', 'familieNaam', 'inszNummer', 'geslacht'];
     if (currentStep === 2) fieldsToValidate = ['straat', 'huisnummer', 'postCode', 'gemeente', 'land'];
     if (currentStep === 3) fieldsToValidate = ['iban', 'bic', 'taal', 'emailLoonbrief'];
     
