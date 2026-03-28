@@ -31,8 +31,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const login = async (email: string, pass: string): Promise<boolean> => {
-    // Mock authentication logic - ready for JWT sync
-    if (email === 'admin@prato.be' && pass === 'prato123') {
+    // Mock authentication - credentials loaded from environment variables.
+    // Set VITE_MOCK_ADMIN_EMAIL and VITE_MOCK_ADMIN_PASSWORD in your .env file.
+    const mockEmail = import.meta.env.VITE_MOCK_ADMIN_EMAIL;
+    const mockPassword = import.meta.env.VITE_MOCK_ADMIN_PASSWORD;
+    if (email === mockEmail && pass === mockPassword) {
       const mockUser: User = {
         id: 'u-001',
         email,

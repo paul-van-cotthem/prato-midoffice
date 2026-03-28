@@ -158,10 +158,10 @@ export default function AddSnapshot() {
         </div>
         <div className="space-y-3">
           <h2 className="text-4xl font-black text-slate-900 dark:text-slate-50 uppercase tracking-tight">
-            {t('wizard.feedback.success_title') || 'Snapshot Opgeslagen!'}
+            {t('wizard.feedback.success_title')}
           </h2>
           <p className="text-slate-500 dark:text-slate-400 font-bold text-lg">
-            {t('wizard.feedback.success_message') || 'De nieuwe fiscale snapshot is succesvol verwerkt.'}
+            {t('wizard.feedback.success_message')}
           </p>
         </div>
         <div className="pt-8">
@@ -177,12 +177,12 @@ export default function AddSnapshot() {
         <div className="space-y-2">
           <div className="flex items-center gap-3">
             <span className="px-3 py-1 bg-emerald-100 dark:bg-emerald-950/30 text-emerald-600 dark:text-emerald-400 text-[10px] font-black uppercase tracking-widest rounded-full border border-emerald-200 dark:border-emerald-800">
-              {t('wizard.badge') || 'Nieuwe Snapshot'}
+              {t('wizard.badge')}
             </span>
             <span className="text-slate-400 font-black text-xs uppercase tracking-tighter">/ {person.id}</span>
           </div>
           <h1 className="text-5xl font-black tracking-tight text-slate-900 dark:text-slate-50">
-            {t('wizard.title_prefix') || 'Dossier van'} {person.snapshots[0].voornaam} {person.snapshots[0].familieNaam}
+            {t('wizard.title_prefix')} {person.snapshots[0].voornaam} {person.snapshots[0].familieNaam}
           </h1>
         </div>
         
@@ -191,7 +191,7 @@ export default function AddSnapshot() {
             {currentStep}
           </div>
           <div className="pr-4">
-             <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">{t('wizard.step_indicator') || 'Stap'}</p>
+             <p className="text-[10px] font-black uppercase tracking-widest text-slate-400">{t('wizard.step_indicator')}</p>
              <p className="font-bold text-slate-700 dark:text-slate-300 whitespace-nowrap">{steps[currentStep-1].name}</p>
           </div>
         </div>
@@ -243,8 +243,8 @@ export default function AddSnapshot() {
                     <User className="w-8 h-8" />
                   </div>
                   <div>
-                    <h2 className="text-3xl font-black text-slate-900 dark:text-slate-50 uppercase tracking-tight">{t('wizard.steps.identity') || 'Identiteitsgegevens'}</h2>
-                    <p className="text-slate-400 font-bold">{t('wizard.steps.identity_sub') || 'Basisgegevens van de werknemer'}</p>
+                    <h2 className="text-3xl font-black text-slate-900 dark:text-slate-50 uppercase tracking-tight">{t('wizard.steps.identity')}</h2>
+                    <p className="text-slate-400 font-bold">{t('wizard.steps.identity_sub')}</p>
                   </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-10">

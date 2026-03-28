@@ -12,8 +12,10 @@ import {
   Zap
 } from 'lucide-react';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function MessageQueue() {
+  const { t } = useTranslation();
   const { messageQueue, clearQueue } = useData();
   const [selectedMessage, setSelectedMessage] = useState<BackendMessage | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
@@ -47,19 +49,19 @@ export default function MessageQueue() {
         <div>
           <h1 className="text-4xl font-black tracking-tight text-slate-900 dark:text-slate-50 flex items-center gap-3">
             <MessageSquare className="w-10 h-10 text-emerald-500" />
-            Message Queue
+            {t('message_queue.title')}
           </h1>
           <p className="text-slate-500 dark:text-slate-400 mt-1 font-medium italic">
-            Live monitor voor achtergrond-interfacing met Earnie Payroll Engine
+            {t('message_queue.subtitle')}
           </p>
         </div>
         <div className="flex gap-3">
           <button 
             onClick={clearQueue}
-            className="flex items-center gap-2 p-3 bg-rose-50 dark:bg-rose-950/20 text-rose-600 dark:text-rose-400 border border-rose-100 dark:border-rose-900/50 rounded-2xl hover:bg-rose-100 transition-all font-bold group"
+            className="flex items-center gap-2 p-3 bg-rose-50 dark:bg-rose-950/20 text-rose-600 dark:text-rose-400 border border-rose-100 dark:border-rose-900/50 rounded-2xl hover:bg-rose-100 transition-all font-bold group text-sm"
           >
             <Trash2 className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-            Clear Queue
+            {t('message_queue.clear_queue')}
           </button>
         </div>
       </header>
@@ -70,17 +72,17 @@ export default function MessageQueue() {
           <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-[2rem] shadow-xl overflow-hidden">
             <div className="p-6 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between gap-4 bg-slate-50/50 dark:bg-slate-900/50">
                <div className="relative flex-1 group">
-                  <Search className="absolute left-4 top-1/2 -translate-y-1-2 w-4 h-4 text-slate-400 group-focus-within:text-emerald-500 transition-colors" />
+                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-emerald-500 transition-colors" />
                   <input 
                     type="text" 
-                    placeholder="Search messages..."
+                    placeholder={t('message_queue.search_placeholder')}
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl py-2.5 pl-11 pr-4 outline-none focus:ring-4 focus:ring-emerald-500/10 focus:border-emerald-500 transition-all text-sm font-medium"
                   />
                </div>
-               <div className="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-[10px] font-black uppercase tracking-widest text-slate-500">
-                 {filteredMessages.length} Messages
+               <div className="px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg text-[10px] font-black uppercase tracking-widest text-slate-500 whitespace-nowrap">
+                 {filteredMessages.length} {t('message_queue.messages_count')}
                </div>
             </div>
 
@@ -116,8 +118,8 @@ export default function MessageQueue() {
               ) : (
                 <div className="p-20 text-center text-slate-400">
                   <MessageSquare className="w-12 h-12 mx-auto mb-4 opacity-10" />
-                  <p className="font-bold tracking-tight">Geen berichten in de wachtrij</p>
-                  <p className="text-sm">Voer een mutatie uit om een bericht te genereren</p>
+                  <p className="font-bold tracking-tight">{t('message_queue.no_messages')}</p>
+                  <p className="text-sm">{t('message_queue.no_messages_sub')}</p>
                 </div>
               )}
             </div>
@@ -131,7 +133,7 @@ export default function MessageQueue() {
                 <div className="p-6 border-b border-slate-800 flex items-center justify-between bg-slate-800/50">
                    <div className="flex items-center gap-3 text-white">
                       <Code className="w-5 h-5 text-emerald-400" />
-                      <span className="font-bold uppercase tracking-widest text-xs">JSON Payload</span>
+                      <span className="font-bold uppercase tracking-widest text-xs">{t('message_queue.json_payload')}</span>
                    </div>
                    <button 
                      onClick={() => {
@@ -139,7 +141,7 @@ export default function MessageQueue() {
                      }}
                      className="text-[10px] font-black text-slate-400 hover:text-white uppercase tracking-widest transition-colors px-3 py-1 border border-slate-700 rounded-lg"
                    >
-                     Copy JSON
+                     {t('message_queue.copy_json')}
                    </button>
                 </div>
                 <div className="p-8">
@@ -150,23 +152,23 @@ export default function MessageQueue() {
                 <div className="p-6 bg-slate-800/30 border-t border-slate-800">
                    <div className="flex flex-col gap-3">
                       <div className="flex items-center justify-between text-[10px] font-black text-slate-500 uppercase tracking-widest">
-                         <span>Status Log</span>
+                         <span>{t('message_queue.status_log')}</span>
                          <span>{new Date(selectedMessage.timestamp).toLocaleString()}</span>
                       </div>
                       <div className="flex items-center gap-3">
                          <div className="w-2 h-2 rounded-full bg-emerald-500" />
-                         <span className="text-xs text-slate-300 font-medium">Bericht succesvol gegenereerd uit mutatie hook.</span>
+                         <span className="text-xs text-slate-300 font-medium">{t('message_queue.gen_msg_log')}</span>
                       </div>
                       {selectedMessage.status === 'Sent' && (
                         <div className="flex items-center gap-3">
                            <div className="w-2 h-2 rounded-full bg-blue-500" />
-                           <span className="text-xs text-slate-300 font-medium">Verzonden naar backend interfacing layer.</span>
+                           <span className="text-xs text-slate-300 font-medium">{t('message_queue.sent_msg_log')}</span>
                         </div>
                       )}
                       {selectedMessage.status === 'Processed' && (
                         <div className="flex items-center gap-3">
                            <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                           <span className="text-xs text-emerald-400 font-bold">Bevestigd door Earnie Messaging Service.</span>
+                           <span className="text-xs text-emerald-400 font-bold">{t('message_queue.proc_msg_log')}</span>
                         </div>
                       )}
                    </div>
@@ -177,8 +179,8 @@ export default function MessageQueue() {
                 <div className="w-16 h-16 bg-slate-50 dark:bg-slate-900 rounded-3xl flex items-center justify-center mb-6 text-slate-300 dark:text-slate-700">
                   <Zap className="w-8 h-8" />
                 </div>
-                <h3 className="font-black text-slate-900 dark:text-slate-50 uppercase tracking-widest text-sm mb-2">Inspector</h3>
-                <p className="text-slate-400 text-sm max-w-[200px]">Selecteer een bericht om de payload te analyseren</p>
+                <h3 className="font-black text-slate-900 dark:text-slate-50 uppercase tracking-widest text-sm mb-2">{t('message_queue.inspector_title')}</h3>
+                <p className="text-slate-400 text-sm max-w-[200px]">{t('message_queue.inspector_desc')}</p>
              </div>
            )}
         </div>

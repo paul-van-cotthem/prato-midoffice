@@ -20,7 +20,7 @@ export default function Sidebar() {
     { to: '/employers', icon: Building2, label: t('navigation.employers') },
     { to: '/contracts', icon: FileText, label: t('navigation.contracts') },
     { to: '/payroll', icon: Wallet2, label: t('navigation.payroll') },
-    { to: '/messages', icon: Zap, label: 'Message Queue' },
+    { to: '/messages', icon: Zap, label: t('navigation.messages') },
   ];
 
   return (

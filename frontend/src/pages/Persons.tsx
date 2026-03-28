@@ -88,7 +88,7 @@ export default function Persons() {
               className="flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-2xl font-bold transition-all shadow-lg shadow-emerald-500/20 active:scale-95 cursor-pointer whitespace-nowrap"
             >
               <Plus className="w-5 h-5" />
-              {t('dashboard.new_person') || 'Nieuwe Persoon'}
+              {t('dashboard.new_person')}
             </button>
             <div className="relative flex-1 md:w-64">
                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />

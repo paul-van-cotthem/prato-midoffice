@@ -37,3 +37,7 @@ yarn-error.log*
 .agent/
 .agents/
 /tmp/
+
+# Secrets - never commit these
+backend/Prato.Midoffice/appsettings.json
+frontend/.env

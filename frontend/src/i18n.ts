@@ -14,7 +14,11 @@ const resources = {
         "loading": "Laden...",
         "processing": "Verwerken...",
         "error": "Fout",
-        "success": "Succes"
+        "success": "Succes",
+        "next": "Volgende Stap",
+        "previous": "Vorige",
+        "back_to_overview": "Terug naar overzicht",
+        "close": "Sluiten"
       },
       "dashboard": {
         "title": "Prato Mid-office",
@@ -38,7 +42,8 @@ const resources = {
         "persons": "Personen",
         "employers": "Werkgevers",
         "contracts": "Contracten",
-        "payroll": "Lonen"
+        "payroll": "Lonen",
+        "messages": "Berichtenwachtrij"
       },
       "theme": {
         "light": "Lichte modus",
@@ -59,17 +64,33 @@ const resources = {
         "select_employer": "Selecteer werkgever..."
       },
       "wizard": {
-        "title": "Snapshot Manager",
+        "badge": "Nieuwe Snapshot",
+        "title_prefix": "Dossier van",
         "subtitle": "Nieuwe historiek voor",
-        "step": "Stap",
-        "next": "Volgende Stap",
-        "prev": "Vorige",
-        "submit": "Indienen & Synchroniseren",
+        "step_indicator": "Stap",
         "steps": {
-          "1": { "name": "Basis", "desc": "Personalia & Contact", "title": "Basis Informatie", "sub": "De fundamentele identificatiegegevens voor de loonverwerking." },
-          "2": { "name": "Adres & Bank", "desc": "Domicilie & Rekening", "title": "Adres & Betaalgegevens", "sub": "Domicilie-adres en het rekeningnummer voor de loonstorting." },
-          "3": { "name": "Fiscaal", "desc": "Lasten & Belasting", "title": "Fiscale Situatie & Gezinslast", "sub": "Parameters die de bedrijfsvoorheffing en belastingvrije som bepalen." },
-          "4": { "name": "Review", "desc": "Controle & Verzenden", "title": "Klaar voor Sync?", "sub": "Controleer het dossier nauwkeurig voor verzending naar de loonmotor." }
+          "identity": "Identiteit",
+          "identity_sub": "De fundamentele identificatiegegevens voor de loonverwerking.",
+          "address": "Adres & Bank",
+          "address_sub": "Domicilie-adres en het rekeningnummer voor de loonstorting.",
+          "payment": "Betaalgegevens",
+          "payment_sub": "Gegevens voor de uitbetaling van het loon.",
+          "family": "Gezinssituatie",
+          "family_sub": "Parameters die de bedrijfsvoorheffing en belastingvrije som bepalen.",
+          "fiscal": "Controle & Bevestiging",
+          "fiscal_sub": "Controleer het dossier nauwkeurig voor verzending naar de loonmotor.",
+          "review": { "name": "Review", "desc": "Controle & Verzenden", "title": "Klaar voor Sync?", "sub": "Controleer het dossier nauwkeurig voor verzending naar de loonmotor." }
+        },
+        "form": {
+          "first_name": "Voornaam",
+          "last_name": "Familienaam",
+          "insz": "INSZ Nummer",
+          "gender": "Geslacht",
+          "street": "Straat",
+          "number": "Nr",
+          "postal_code": "Postcode",
+          "city": "Gemeente",
+          "email_payslip": "E-mail voor loonbrief"
         },
         "fields": {
           "lastname": "Familienaam",
@@ -93,26 +114,14 @@ const resources = {
           "children": "Kinderen ten laste",
           "children_disabled": "Hiervan mindervalide"
         },
-        "review": {
-          "full_name": "Volledige Naam",
-          "rrn": "Rijksregister (INSZ)",
-          "address": "Domicilie-adres",
-          "payment": "Betaalmethode",
-          "not_configured": "Niet geconfigureerd",
-          "important": "Belangrijk",
-          "sync_warning": "Deze data wordt direct gesynchroniseerd met Earnie. Onjuiste data kan leiden tot foutieve loonberekeningen."
+        "feedback": {
+          "success_title": "Snapshot Opgeslagen!",
+          "success_message": "De nieuwe snapshot is succesvol verwerkt en gesynchroniseerd.",
+          "error": "Er is een fout opgetreden bij het opslaan.",
+          "saved_locally_warning": "Data lokaal opgeslagen, maar kon niet synchroniseren met Earnie."
         },
-        "options": {
-          "lang_nl": "Vlaams (NL)",
-          "lang_fr": "Frans (FR)",
-          "male": "Man",
-          "female": "Vrouw",
-          "other": "X (Andere)",
-          "status_single": "Ongehuwd (Vrijgezel)",
-          "status_married": "Gehuwd",
-          "status_cohabiting": "Wettelijk Samenwonend",
-          "status_widow": "Weduwnaar / Weduwe",
-          "status_divorced": "Gescheiden"
+        "error": {
+          "person_not_found": "Persoon niet gevonden"
         }
       },
       "persons": {
@@ -123,6 +132,23 @@ const resources = {
         "data_incomplete": "Data Onvolledig",
         "snapshots_count": "Snapshot(s)",
         "no_results": "Geen personen gevonden voor deze selectie."
+      },
+      "message_queue": {
+        "title": "Berichtenwachtrij",
+        "subtitle": "Live monitor voor achtergrond-interfacing met Earnie Payroll Engine",
+        "clear_queue": "Verwijder Wachtrij",
+        "search_placeholder": "Zoek berichten...",
+        "messages_count": "Berichten",
+        "no_messages": "Geen berichten in de wachtrij",
+        "no_messages_sub": "Voer een mutatie uit om een bericht te genereren",
+        "json_payload": "JSON Payload",
+        "copy_json": "Kopieer JSON",
+        "status_log": "Status Log",
+        "gen_msg_log": "Bericht succesvol gegenereerd uit mutatie hook.",
+        "sent_msg_log": "Verzonden naar backend interfacing layer.",
+        "proc_msg_log": "Bevestigd door Earnie Messaging Service.",
+        "inspector_title": "Inspector",
+        "inspector_desc": "Selecteer een bericht om de payload te analyseren"
       },
       "employers": {
         "title": "Werkgevers",
@@ -196,7 +222,11 @@ const resources = {
         "loading": "Chargement...",
         "processing": "Traitement...",
         "error": "Erreur",
-        "success": "Succès"
+        "success": "Succès",
+        "next": "Étape Suivante",
+        "previous": "Précédent",
+        "back_to_overview": "Retour à l'aperçu",
+        "close": "Fermer"
       },
       "dashboard": {
         "title": "Prato Mid-office",
@@ -208,7 +238,7 @@ const resources = {
         "new_person": "Nouvelle Personne",
         "start_payroll": "Lancer le calcul",
         "search_employer": "Chercher Employeur",
-        "feed_title": "F flux de messages en direct (Earnie)",
+        "feed_title": "Flux de messages en direct (Earnie)",
         "messages": {
           "snapshot_processed": { "title": "Snapshot Traité", "detail": "Personne synchronisée avec succès avec Earnie." },
           "validation_error": { "title": "Erreur de Validation", "detail": "Le numéro NISS contient des caractères invalides." },
@@ -220,7 +250,8 @@ const resources = {
         "persons": "Personnes",
         "employers": "Employeurs",
         "contracts": "Contrats",
-        "payroll": "Salaires"
+        "payroll": "Salaires",
+        "messages": "File de messages"
       },
       "theme": {
         "light": "Mode clair",
@@ -241,70 +272,69 @@ const resources = {
         "select_employer": "Sélectionner employeur..."
       },
       "wizard": {
-        "title": "Gestionnaire de Snapshots",
+        "badge": "Nouveau Snapshot",
+        "title_prefix": "Dossier de",
         "subtitle": "Nouvel historique pour",
-        "step": "Étape",
-        "next": "Étape Suivante",
-        "prev": "Précédent",
-        "submit": "Soumettre & Synchroniser",
+        "step_indicator": "Étape",
         "steps": {
-          "1": { "name": "Base", "desc": "Infos & Contact", "title": "Informations de Base", "sub": "Données d'identification fondamentales pour la paie." },
-          "2": { "name": "Adresse & Banque", "desc": "Domicile & Compte", "title": "Adresse & Coordonnées Bancaires", "sub": "Adresse du domicile et numéro de compte pour le virement." },
-          "3": { "name": "Fiscal", "desc": "Charges & Impôts", "title": "Situation Fiscale & Personnes à Charge", "sub": "Paramètres déterminant le précompte professionnel." },
-          "4": { "name": "Révision", "desc": "Contrôle & Envoi", "title": "Prêt pour Sync ?", "sub": "Veuillez vérifier attentivement le dossier avant l'envoi au moteur." }
+          "identity": "Identité",
+          "identity_sub": "Données d'identification fondamentales pour la paie.",
+          "address": "Adresse & Banque",
+          "address_sub": "Adresse du domicile et numéro de compte pour le virement.",
+          "payment": "Coordonnées Bancaires",
+          "payment_sub": "Données pour le paiement du salaire.",
+          "family": "Situation Fiscale",
+          "family_sub": "Paramètres déterminant le précompte professionnel.",
+          "fiscal": "Contrôle & Confirmation",
+          "fiscal_sub": "Vérifiez attentivement le dossier avant l'envoi au moteur.",
+          "review": { "name": "Révision", "desc": "Contrôle & Envoi", "title": "Prêt pour Sync ?", "sub": "Veuillez vérifier attentivement le dossier avant l'envoi au moteur." }
         },
-        "fields": {
-          "lastname": "Nom de famille",
-          "firstname": "Prénom",
+        "form": {
+          "first_name": "Prénom",
+          "last_name": "Nom de famille",
           "insz": "Numéro NISS",
-          "email_slip": "E-mail pour fiche de paie",
-          "language_pref": "Préférence linguistique",
           "gender": "Sexe",
           "street": "Rue",
-          "nr": "N°",
-          "bus": "Bte",
-          "postal": "Code postal",
+          "number": "N°",
+          "postal_code": "Code postal",
           "city": "Commune",
-          "bank_info": "Données bancaires",
-          "iban": "IBAN (Belge)",
-          "bic": "Code BIC",
-          "civil_status": "État civil",
-          "disabled": "Invalidité",
-          "disabled_sub": "La personne a un handicap reconnu",
-          "dependents": "Personnes à charge",
-          "children": "Enfants à charge",
-          "children_disabled": "Dont handicapés"
+          "email_payslip": "E-mail pour fiche de paie"
         },
-        "review": {
-          "full_name": "Nom Complet",
-          "rrn": "Numéro de Registre National",
-          "address": "Adresse du domicile",
-          "payment": "Méthode de paiement",
-          "not_configured": "Non configuré",
-          "important": "Important",
-          "sync_warning": "Ces données seront synchronisées avec Earnie. Des données erronées peuvent entraîner des calculs de paie incorrects."
+        "feedback": {
+          "success_title": "Snapshot Enregistré !",
+          "success_message": "Le nouveau snapshot a été traité et synchronisé avec succès.",
+          "error": "Une erreur est survenue lors de l'enregistrement.",
+          "saved_locally_warning": "Données enregistrées localement, mais échec de synchronisation avec Earnie."
         },
-        "options": {
-          "lang_nl": "Néerlandais (NL)",
-          "lang_fr": "Français (FR)",
-          "male": "Homme",
-          "female": "Femme",
-          "other": "X (Autre)",
-          "status_single": "Célibataire",
-          "status_married": "Marié(e)",
-          "status_cohabiting": "Cohabitation légale",
-          "status_widow": "Veuf / Veuve",
-          "status_divorced": "Divorcé(e)"
+        "error": {
+          "person_not_found": "Personne non trouvée"
         }
       },
       "persons": {
         "no_employer_title": "Aucun employeur sélectionné",
-        "no_employer_subtitle": "Veuillez d'abord sélectionner un employeur dans la barre latérale om te begijnden.",
+        "no_employer_subtitle": "Veuillez d'abord sélectionner un employeur dans la barre latérale.",
         "subtitle": "Aperçu de toutes les personnes pour",
         "search_placeholder": "Chercher par nom ou NISS...",
         "data_incomplete": "Données Incomplètes",
         "snapshots_count": "Snapshot(s)",
-        "no_results": "Aucune personne trouvée voor deze selectie."
+        "no_results": "Aucune personne trouvée pour cette sélection."
+      },
+      "message_queue": {
+        "title": "File de messages",
+        "subtitle": "Monitor en direct pour l'interfaçage avec le moteur Earnie",
+        "clear_queue": "Effacer la file",
+        "search_placeholder": "Chercher messages...",
+        "messages_count": "Messages",
+        "no_messages": "Aucun message dans la file",
+        "no_messages_sub": "Effectuez une mutation pour générer un message",
+        "json_payload": "Payload JSON",
+        "copy_json": "Copier le JSON",
+        "status_log": "Log de statut",
+        "gen_msg_log": "Message généré avec succès.",
+        "sent_msg_log": "Envoyé à la couche d'interface backend.",
+        "proc_msg_log": "Confirmé par le service de messagerie Earnie.",
+        "inspector_title": "Inspecteur",
+        "inspector_desc": "Sélectionnez un message pour analyser le payload"
       },
       "employers": {
         "title": "Employeurs",
@@ -378,7 +408,11 @@ const resources = {
         "loading": "Loading...",
         "processing": "Processing...",
         "error": "Error",
-        "success": "Success"
+        "success": "Success",
+        "next": "Next Step",
+        "previous": "Previous",
+        "back_to_overview": "Back to overview",
+        "close": "Close"
       },
       "dashboard": {
         "title": "Prato Mid-office",
@@ -402,7 +436,8 @@ const resources = {
         "persons": "Persons",
         "employers": "Employers",
         "contracts": "Contracts",
-        "payroll": "Payroll"
+        "payroll": "Payroll",
+        "messages": "Message Queue"
       },
       "theme": {
         "light": "Light mode",
@@ -423,17 +458,33 @@ const resources = {
         "select_employer": "Select employer..."
       },
       "wizard": {
-        "title": "Snapshot Manager",
+        "badge": "New Snapshot",
+        "title_prefix": "File of",
         "subtitle": "New history for",
-        "step": "Step",
-        "next": "Next Step",
-        "prev": "Previous",
-        "submit": "Submit & Sync",
+        "step_indicator": "Step",
         "steps": {
-          "1": { "name": "Basic", "desc": "Personal & Contact", "title": "Basic Information", "sub": "Core identification data for payroll processing." },
-          "2": { "name": "Address & Bank", "desc": "Address & Account", "title": "Address & Payment Details", "sub": "Domicile address and bank account for payment." },
-          "3": { "name": "Fiscal", "desc": "Taxes & Dependents", "title": "Fiscal Status & Dependents", "sub": "Parameters determining professional withholding tax." },
-          "4": { "name": "Review", "desc": "Audit & Submit", "title": "Ready to Sync?", "sub": "Please audit the file carefully before sending to the engine." }
+          "identity": "Identity",
+          "identity_sub": "Core identification data for payroll processing.",
+          "address": "Address & Bank",
+          "address_sub": "Domicile address and bank account for payment.",
+          "payment": "Payment Details",
+          "payment_sub": "Data for salary disbursement.",
+          "family": "Fiscal Status",
+          "family_sub": "Parameters determining professional withholding tax.",
+          "fiscal": "Audit & Submit",
+          "fiscal_sub": "Please audit the file carefully before sending to the engine.",
+          "review": { "name": "Review", "desc": "Audit & Submit", "title": "Ready to Sync?", "sub": "Please audit the file carefully before sending to the engine." }
+        },
+        "form": {
+          "first_name": "First Name",
+          "last_name": "Last Name",
+          "insz": "National Registry No.",
+          "gender": "Gender",
+          "street": "Street",
+          "number": "No.",
+          "postal_code": "Postal Code",
+          "city": "City",
+          "email_payslip": "Payslip Email"
         },
         "fields": {
           "lastname": "Last Name",
@@ -457,26 +508,14 @@ const resources = {
           "children": "Dependent Children",
           "children_disabled": "Of which disabled"
         },
-        "review": {
-          "full_name": "Full Name",
-          "rrn": "National Registry Number",
-          "address": "Home Address",
-          "payment": "Payment Method",
-          "not_configured": "Not configured",
-          "important": "Important",
-          "sync_warning": "This data will be synced directly with Earnie. Incorrect data may lead to faulty payroll calculations."
+        "feedback": {
+          "success_title": "Snapshot Saved!",
+          "success_message": "The new snapshot has been successfully processed and synced.",
+          "error": "An error occurred during save.",
+          "saved_locally_warning": "Data saved locally, but failed to sync with Earnie."
         },
-        "options": {
-          "lang_nl": "Dutch (NL)",
-          "lang_fr": "French (FR)",
-          "male": "Male",
-          "female": "Female",
-          "other": "X (Other)",
-          "status_single": "Single",
-          "status_married": "Married",
-          "status_cohabiting": "Legal Cohabitation",
-          "status_widow": "Widowed",
-          "status_divorced": "Divorced"
+        "error": {
+          "person_not_found": "Person not found"
         }
       },
       "persons": {
@@ -487,6 +526,23 @@ const resources = {
         "data_incomplete": "Data Incomplete",
         "snapshots_count": "Snapshot(s)",
         "no_results": "No persons found for this selection."
+      },
+      "message_queue": {
+        "title": "Message Queue",
+        "subtitle": "Live monitor for background interfacing with Earnie Payroll Engine",
+        "clear_queue": "Clear Queue",
+        "search_placeholder": "Search messages...",
+        "messages_count": "Messages",
+        "no_messages": "No messages in queue",
+        "no_messages_sub": "Perform a mutation to generate a message",
+        "json_payload": "JSON Payload",
+        "copy_json": "Copy JSON",
+        "status_log": "Status Log",
+        "gen_msg_log": "Message successfully generated from mutation hook.",
+        "sent_msg_log": "Sent to backend interfacing layer.",
+        "proc_msg_log": "Confirmed by Earnie Messaging Service.",
+        "inspector_title": "Inspector",
+        "inspector_desc": "Select a message to analyze the payload"
       },
       "employers": {
         "title": "Employers",
